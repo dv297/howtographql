@@ -64,22 +64,6 @@ prisma generate
 
 </Instruction>
 
-Right now, it is a bit annoying that you need to explicitly run `prisma generate` every time you're migrating your database with `prisma deploy`. To make that easier in the future, you can configure a [post-deployment hook](https://www.prisma.io/docs/prisma-cli-and-configuration/prisma-yml-5cy7/#hooks-optional) that gets invoked every time after you ran `prisma deploy`.
-
-<Instruction>
-
-Add the following lines to the end of your `prisma.yml`:
-
-```yml(path=".../hackernews-node/prisma/prisma.yml")
-hooks:
-  post-deploy:
-    - prisma generate
-```
-
-</Instruction>
-
-The Prisma client will now automatically be regenerated upon a datamodel change. 
-
 ### Extending the GraphQL schema
 
 Remember the process of schema-driven development? It all starts with extending your schema definition with the new operations that you want to add to the API - in this case a `signup` and `login` mutation.
